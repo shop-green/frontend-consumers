@@ -5,11 +5,12 @@ import mapboxgl from "mapbox-gl";
 import { useEffect, useState } from "react";
 
 interface Shop {
-  location: {lat: number, lng: number}
+  location: { lat: number; lng: number };
+  address: string;
 }
 
 interface MapProps {
-  searchLocation: {lat: number, lng: number};
+  searchLocation: { lat: number; lng: number };
   shopsNearby: Shop[];
 }
 
@@ -40,13 +41,26 @@ export default function Maps({ searchLocation, shopsNearby }: MapProps) {
     setMap(map);
   }, [searchLocation]);
 
+  function popup(address, location) {
+    //  return new mapboxgl.Popup({ offset: 20 }).setText(
+    //   address
+    //   );
+    return new mapboxgl.Popup({ offset: 20 }).setHTML(`
+  <p>${address} </p>
+  <p>
+      <a href="https://www.google.com/maps?q=${location.lat},${location.lng}"; style={{ textDecoration: 'none' }}>Start Navigation</a>
+    </p>
+  `);
+  }
+
   useEffect(() => {
     if (map) {
-      shopsNearby.forEach(({location}) => {
-        new mapboxgl.Marker({ color: "#3E966D"})
+      shopsNearby.forEach(({ location, address }) => {
+        new mapboxgl.Marker({ color: "#3E966D" })
           .setLngLat([location.lng, location.lat])
-          .addTo(map);
-      })
+          .addTo(map)
+          .setPopup(popup(address, location));
+      });
     }
   }, [shopsNearby, map]);
 

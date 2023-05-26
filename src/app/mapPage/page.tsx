@@ -97,18 +97,21 @@ export default function MapPage() {
                 lat: 55.704511,
                 lng: 12.554729,
               },
+              address: "Address 1 of the farm",
             },
             {
               location: {
                 lat: 55.706511,
                 lng: 12.554729,
               },
+              address: "Address 1 of the farm",
             },
             {
               location: {
                 lat: 55.705511,
                 lng: 12.554729,
               },
+              address: "Address 1 of the farm",
             },
           ]}
         />
