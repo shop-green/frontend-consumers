@@ -21,6 +21,8 @@ interface IUser {
   avatar: string;
 }
 
+// pk.eyJ1IjoidmFsb3ItbW1tIiwiYSI6ImNsaTNqZzB4ODBldmwzZm85MWd3bzU2dzEifQ.nV09EKu-1xl3gviNZdhYGQ
+
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   sticky = true,
 }) => {
@@ -31,6 +33,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
 
   return (
     <AppBar position={sticky ? "sticky" : "relative"}>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
       <Toolbar>
         <Stack direction="row" width="100%" alignItems="center">
           <HamburgerMenu />

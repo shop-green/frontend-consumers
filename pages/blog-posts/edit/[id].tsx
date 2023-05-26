@@ -6,14 +6,14 @@ export default function BlogPostEdit() {
   return <MuiEditInferencer />;
 }
 
-export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-  const translateProps = await serverSideTranslations(context.locale ?? "en", [
-    "common",
-  ]);
+// export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
+//   const translateProps = await serverSideTranslations(context.locale ?? "en", [
+//     "common",
+//   ]);
 
-  return {
-    props: {
-      ...translateProps,
-    },
-  };
-};
+//   return {
+//     props: {
+//       ...translateProps,
+//     },
+  // };
+// };
