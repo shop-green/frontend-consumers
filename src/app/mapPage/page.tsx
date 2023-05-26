@@ -76,7 +76,7 @@ export default function MapPage() {
           <Grid item xs={4} md={2} display="flex" justify-content="flex-start">
             <IconButton
               onClick={() => {
-                router.push("filters");
+                router.push("filter");
               }}
               size="large"
               style={{
@@ -89,7 +89,29 @@ export default function MapPage() {
             </IconButton>
           </Grid>
         </Grid>
-        <Map searchLocation={location} />
+        <Map
+          searchLocation={location}
+          shopsNearby={[
+            {
+              location: {
+                lat: 55.704511,
+                lng: 12.554729,
+              },
+            },
+            {
+              location: {
+                lat: 55.706511,
+                lng: 12.554729,
+              },
+            },
+            {
+              location: {
+                lat: 55.705511,
+                lng: 12.554729,
+              },
+            },
+          ]}
+        />
       </Stack>
     </main>
   );

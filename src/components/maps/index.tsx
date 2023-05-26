@@ -4,35 +4,17 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import { useEffect, useState } from "react";
 
-interface MapProps {
-  searchLocation: {lat: number, lng: number};
+interface Shop {
+  location: {lat: number, lng: number}
 }
 
-export default function Maps({ searchLocation }: MapProps) {
-  const [map, setMap] = useState<any>();
-  const [points, setPoints] = useState<{ lat: number; lng: number }[]>([]);
+interface MapProps {
+  searchLocation: {lat: number, lng: number};
+  shopsNearby: Shop[];
+}
 
-  // Example of how to load data from a server
-  const loadData = () => new Promise((resolve) => {
-    setTimeout(
-      () =>
-        resolve([
-          {
-            lat: 55.704511,
-            lng: 12.554729,
-          },
-          {
-            lat: 55.705511,
-            lng: 12.554729,
-          },
-          {
-            lat: 55.706511,
-            lng: 12.554729,
-          },
-        ]),
-      3000
-    );
-  });
+export default function Maps({ searchLocation, shopsNearby }: MapProps) {
+  const [map, setMap] = useState<any>();
 
   mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP_KEY as string;
   useEffect(() => {
@@ -59,18 +41,14 @@ export default function Maps({ searchLocation }: MapProps) {
   }, [searchLocation]);
 
   useEffect(() => {
-    loadData().then((data) => {
-      setPoints(data);
-    })
-  }, [map, setPoints]);
-
-  useEffect(() => {
-    points.forEach((point) => {
-      new mapboxgl.Marker({ color: "#3E966D"})
-        .setLngLat([point.lng, point.lat])
-        .addTo(map);
-    })
-  }, [points, map]);
+    if (map) {
+      shopsNearby.forEach(({location}) => {
+        new mapboxgl.Marker({ color: "#3E966D"})
+          .setLngLat([location.lng, location.lat])
+          .addTo(map);
+      })
+    }
+  }, [shopsNearby, map]);
 
   return <div id="map" style={{ width: "80%", height: "80%" }}></div>;
 }
