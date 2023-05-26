@@ -1,47 +1,36 @@
 {
-  "name": "consumer-frontend",
+  "name": "frontend-consumer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
-    "build": "refine build",
-    "start": "refine start",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
-    "refine": "refine"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
-    "@mapbox/mapbox-gl-directions": "^4.1.1",
-    "@mui/icons-material": "^5.8.3",
-    "@mui/lab": "^5.0.0-alpha.85",
-    "@mui/material": "^5.8.6",
-    "@mui/x-data-grid": "^5.12.1",
-    "@refinedev/cli": "^2.5.1",
-    "@refinedev/core": "^4.5.8",
-    "@refinedev/inferencer": "^3.1.4",
-    "@refinedev/kbar": "^1.1.0",
-    "@refinedev/mui": "^4.10.0",
-    "@refinedev/nextjs-router": "^5.1.4",
-    "@refinedev/react-hook-form": "^4.1.2",
-    "@refinedev/simple-rest": "^4.0.0",
-    "mapbox-gl": "^2.15.0",
-    "mapbox-gl-directions": "^3.0.3",
-    "next": "^13.0.6",
-    "next-i18next": "^8.9.0",
-    "nookies": "^2.5.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-map-gl": "^7.0.25"
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.2",
+    "@types/node": "20.2.3",
+    "@types/react": "18.2.7",
+    "@types/react-dom": "18.2.4",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
+    "next": "13.4.3",
+    "next-pwa": "^5.6.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
-    "@types/mapbox-gl": "^2.7.11",
-    "@types/node": "^12.20.11",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@typescript-eslint/parser": "5.48.0",
-    "cross-env": "^7.0.3",
-    "typescript": "^4.7.4"
+    "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
