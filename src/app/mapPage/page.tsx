@@ -15,6 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 export default function MapPage() {
   const router = useRouter();
@@ -22,6 +23,8 @@ export default function MapPage() {
     lat: 55.705511,
     lng: 12.554729,
   });
+  const searchParams = useSearchParams();
+  searchParams.forEach((item) => console.log(item));
 
   return (
     <main style={{ width: "100%", height: "100%", padding: "0 8px 8px 8px" }}>

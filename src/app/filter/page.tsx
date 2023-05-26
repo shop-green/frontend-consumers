@@ -11,12 +11,17 @@ import {
   Slider,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import queryString from "query-string";
+
+import { useRouter } from "next/navigation";
 
 const ImageGrid = () => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [organicChecked, setOrganicChecked] = useState(false);
   const [packagingChecked, setPackagingChecked] = useState(false);
   const [radious, setRadious] = React.useState<number>(5);
+
+  const router = useRouter();
 
   const Item = styled("div")({
     display: "flex",
@@ -38,27 +43,33 @@ const ImageGrid = () => {
   const images = [
     {
       url: "https://example.com/image1.jpg",
-      label: "Image 1",
+      label: "1",
+      id: "egg",
     },
     {
       url: "https://example.com/image2.jpg",
       label: "Image 2",
+      id: "milk",
     },
     {
       url: "https://example.com/image3.jpg",
       label: "Image 3",
+      id: "meat",
     },
     {
       url: "https://example.com/image4.jpg",
       label: "Image 1",
+      id: "dairy_products",
     },
     {
       url: "https://example.com/image5.jpg",
       label: "Image 2",
+      id: "vegetables",
     },
     {
       url: "https://example.com/image6.jpg",
       label: "Image 3",
+      id: "fruits",
     },
     // Add more image URLs and labels here
   ];
@@ -125,6 +136,19 @@ const ImageGrid = () => {
     console.log("Organic Checked:", organicChecked);
     console.log("Packaging Checked:", packagingChecked);
     console.log("Readious:", radious);
+
+    const qs = queryString.stringify(
+      {
+        radious: radious,
+        selectedCategory: selectedImages.map((image) => image.id),
+        organicChecked,
+        packagingChecked,
+      },
+      { arrayFormat: "comma" }
+    );
+    console.log("QS", qs);
+
+    router.push(`/mapPage?${qs}`);
   };
 
   return (
