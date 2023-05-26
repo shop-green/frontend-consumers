@@ -4,7 +4,11 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import { useEffect, useState } from "react";
 
-export default function Maps() {
+interface MapProps {
+  searchLocation: {lat: number, lng: number};
+}
+
+export default function Maps({ searchLocation }: MapProps) {
   const [map, setMap] = useState<any>();
   const [points, setPoints] = useState<{ lat: number; lng: number }[]>([]);
 
@@ -26,7 +30,7 @@ export default function Maps() {
             lng: 12.554729,
           },
         ]),
-      6000
+      3000
     );
   });
 
@@ -35,7 +39,7 @@ export default function Maps() {
     const map = new mapboxgl.Map({
       container: "map", // container ID
       style: "mapbox://styles/mapbox/streets-v12", // style URL
-      center: [12.554729, 55.70651], // starting position [lng, lat]
+      center: [searchLocation.lng, searchLocation.lat], // starting position [lng, lat]
       zoom: 16, // starting zoom
     });
 
@@ -52,7 +56,7 @@ export default function Maps() {
     });
 
     setMap(map);
-  }, []);
+  }, [searchLocation]);
 
   useEffect(() => {
     loadData().then((data) => {
@@ -68,5 +72,5 @@ export default function Maps() {
     })
   }, [points, map]);
 
-  return <div id="map" style={{ width: "90%", height: "90%" }}></div>;
+  return <div id="map" style={{ width: "80%", height: "100%" }}></div>;
 }
