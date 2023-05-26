@@ -66,11 +66,11 @@ export default function Maps({ searchLocation }: MapProps) {
 
   useEffect(() => {
     points.forEach((point) => {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({ color: "#3E966D"})
         .setLngLat([point.lng, point.lat])
         .addTo(map);
     })
   }, [points, map]);
 
-  return <div id="map" style={{ width: "80%", height: "100%" }}></div>;
+  return <div id="map" style={{ width: "80%", height: "80%" }}></div>;
 }
