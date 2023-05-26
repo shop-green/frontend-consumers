@@ -3,7 +3,6 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import { useEffect, useState } from "react";
-import { resolve } from "path";
 
 export default function Maps() {
   const [map, setMap] = useState<any>();
@@ -63,7 +62,7 @@ export default function Maps() {
 
   useEffect(() => {
     points.forEach((point) => {
-      const marker = new mapboxgl.Marker()
+      new mapboxgl.Marker()
         .setLngLat([point.lng, point.lat])
         .addTo(map);
     })
