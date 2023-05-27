@@ -10,12 +10,15 @@ import {
 } from "@mui/material";
 import Map from "../../components/maps";
 import { AddressAutofill } from "@mapbox/search-js-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { useShopSearch } from "../../hooks/useShopSearch";
+
+import yn from 'yn';
 
 export default function MapPage() {
   const router = useRouter();
@@ -24,6 +27,21 @@ export default function MapPage() {
     lng: 12.554729,
   });
   const searchParams = useSearchParams();
+  const {shopsNearby, fetchShops} = useShopSearch();
+
+  useEffect(() => {
+    fetchShops({
+      location: {
+        latitude: location.lat,
+        longitude: location.lng,
+      },
+      maxDistance: searchParams.get('readius') ? parseInt(searchParams.get('readius')) : undefined,
+      categories: searchParams.get('selectedCategory') ? searchParams.get('selectedCategory').split(',') : [],
+      organic: yn(searchParams.get('organicChecked') || undefined),
+      ecoPackaging: yn(searchParams.get('packagingChecked') || undefined)
+    })
+  }, [searchParams.toString(), location]);
+
   searchParams.forEach((item) => console.log(item));
 
   return (
@@ -91,29 +109,7 @@ export default function MapPage() {
         </Grid>
         <Map
           searchLocation={location}
-          shopsNearby={[
-            {
-              location: {
-                lat: 55.704511,
-                lng: 12.554729,
-              },
-              address: "Address 1 of the farm",
-            },
-            {
-              location: {
-                lat: 55.706511,
-                lng: 12.554729,
-              },
-              address: "Address 1 of the farm",
-            },
-            {
-              location: {
-                lat: 55.705511,
-                lng: 12.554729,
-              },
-              address: "Address 1 of the farm",
-            },
-          ]}
+          shopsNearby={shopsNearby}
         />
       </Stack>
     </main>
