@@ -4,9 +4,7 @@ import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 import { AddressAutofill } from "@mapbox/search-js-react";
-export default function AddrAutocomplete({
-  setLocation
-}) {
+export default function AddrAutocomplete({ setLocation }) {
   return (
     <form
       onSubmit={(evt) => {
@@ -23,7 +21,7 @@ export default function AddrAutocomplete({
         >
           <TextField
             fullWidth
-            placeholder="Tell us where we should search for you"
+            placeholder="Search for location"
             autoComplete="address-line1"
             InputProps={{
               style: {

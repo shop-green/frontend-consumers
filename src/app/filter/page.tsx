@@ -83,7 +83,6 @@ const ImageGrid = () => {
     paddingRight: "15px",
   });
 
-
   interface CardContainerProps {
     isSelected?: boolean;
   }
@@ -118,7 +117,6 @@ const ImageGrid = () => {
     } else {
       setSelectedImages([...selectedImages, image]);
     }
-    console.log(selectedImages);
   };
 
   const handleOrganicChange = (event) => {
@@ -131,16 +129,15 @@ const ImageGrid = () => {
 
   const handleRadiousChange = (event: Event, newRadious: number | number[]) => {
     setRadious(newRadious as number);
-    console.log(radious);
   };
 
   const handleSubmit = () => {
     // Handle the form submission here
-    console.log("Form submitted!");
-    console.log("Selected Images:", selectedImages);
-    console.log("Organic Checked:", organicChecked);
-    console.log("Packaging Checked:", packagingChecked);
-    console.log("Readious:", radious);
+    // console.log("Form submitted!");
+    // console.log("Selected Images:", selectedImages);
+    // console.log("Organic Checked:", organicChecked);
+    // console.log("Packaging Checked:", packagingChecked);
+    // console.log("Readious:", radious);
 
     const qs = queryString.stringify(
       {
@@ -183,7 +180,7 @@ const ImageGrid = () => {
               )}
               onClick={() => handleImageClick(image)}
             >
-              <Stack>
+              <Stack spacing={1}>
                 <Media image={image.url} />
                 <div
                   style={{
@@ -192,7 +189,7 @@ const ImageGrid = () => {
                     justifyContent: "center",
                   }}
                 >
-                  <a>{image.label}</a>
+                  <a style={{ fontSize: "14px" }}>{image.label}</a>
                 </div>
               </Stack>
             </CardContainer>
