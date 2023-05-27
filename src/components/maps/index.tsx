@@ -47,9 +47,9 @@ export default function Maps({ searchLocation, shopsNearby }: MapProps) {
     //   address
     //   );
     return new mapboxgl.Popup({ offset: 20 }).setHTML(`
-  <p>${name} </p>
+  <p><stong>${name}</strong></p>
   <p>
-      <a href="https://www.google.com/maps?q=${location.lat},${location.lng}"; style={{ textDecoration: 'none' }}>Start Navigation</a>
+      <a target="_blank" href="https://www.google.com/maps?q=${location.lat},${location.lng}"; style={{ textDecoration: 'none' }}>Start Navigation</a>
     </p>
   `);
   }
