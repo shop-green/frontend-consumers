@@ -83,7 +83,12 @@ const ImageGrid = () => {
     paddingRight: "15px",
   });
 
-  const CardContainer = styled(Card)(({ isSelected }) => ({
+
+  interface CardContainerProps {
+    isSelected?: boolean;
+  }
+
+  const CardContainer = styled(Card)<CardContainerProps>(({ isSelected }) => ({
     width: "calc(33.33% - 15px)", // 3 images per row, with 15px spacing between cards
     marginBottom: "16px",
     border: isSelected ? "2px solid green" : "2px solid white", // Add custom border styles for selected images

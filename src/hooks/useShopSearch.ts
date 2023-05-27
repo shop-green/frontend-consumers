@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Shop } from "../components/maps";
 
 import queryString from "query-string";
-
-const url =
-  "{{baseUrl}}/api/farmers/find?location_longitude=-73.9&location_latitude=40.6&maxDistance_km=30&filter_groceryTypes=Potato,Strawberry";
 
 interface ShopSearchOptions {
   location: { longitude: number; latitude: number };
