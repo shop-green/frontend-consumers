@@ -42,33 +42,33 @@ const ImageGrid = () => {
 
   const images = [
     {
-      url: "https://example.com/image1.jpg",
-      label: "1",
+      url: "eggs.svg",
+      label: "Eggs",
       id: "egg",
     },
     {
-      url: "https://example.com/image2.jpg",
-      label: "Image 2",
+      url: "dairy.svg",
+      label: "Milk",
       id: "milk",
     },
     {
-      url: "https://example.com/image3.jpg",
-      label: "Image 3",
+      url: "meat.svg",
+      label: "Meat",
       id: "meat",
     },
     {
-      url: "https://example.com/image4.jpg",
-      label: "Image 1",
+      url: "dairy_products.svg",
+      label: "Dairy Products",
       id: "dairy_products",
     },
     {
-      url: "https://example.com/image5.jpg",
-      label: "Image 2",
+      url: "vegetables.svg",
+      label: "Vegetables",
       id: "vegetables",
     },
     {
-      url: "https://example.com/image6.jpg",
-      label: "Image 3",
+      url: "fruit.svg",
+      label: "Fruits",
       id: "fruits",
     },
     // Add more image URLs and labels here
