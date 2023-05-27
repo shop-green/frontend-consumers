@@ -1,12 +1,5 @@
-"use client";
+import MapPageComponent from '../components/mapPage'
 
-import styled from "@emotion/styled";
-
-const Main = styled.main`
-  width: 100vw;
-  height: 100vh;
-`;
-
-export default function Home() {
-  return <Main>Hello</Main>;
+export default function MapPage() {
+  return <MapPageComponent/>
 }

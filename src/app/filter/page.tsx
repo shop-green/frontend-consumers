@@ -153,7 +153,7 @@ const ImageGrid = () => {
     );
     console.log("QS", qs);
 
-    router.push(`/mapPage?${qs}`);
+    router.push(`/?${qs}`);
   };
 
   return (
